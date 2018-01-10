@@ -3,12 +3,17 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class UserList extends Component {
+  _createListItems() {
+    console.log(this);
+    return (
+      this.props.users.map(user => <li key={user.id}>{user.first} {user.last}</li>)
+    );
+  }
+
   render() {
     return (
       <ul>
-        <li>one</li>
-        <li>two</li>
-        <li>three</li>
+        {this._createListItems()}
       </ul>
     );
   }
@@ -20,5 +25,4 @@ function mapStateToProps(state) {
   };
 }
 
-// export default UserList;
 export default connect(mapStateToProps)(UserList);
